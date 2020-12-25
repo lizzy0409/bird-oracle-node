@@ -15,11 +15,13 @@ export const updateRequest = ({
   return new Promise((resolve, reject) => {
     contract.updatedChainRequest(id, valueRetrieved, {
       from: variables.ACCOUNTS[process.env.ACCOUNT],
-      gas: 60000
+      gas: 600000
     }, (err, res) => {
       if (err === null) {
+        console.log("update", res);
         resolve(res);
       } else {
+        console.error("update", err);
         reject(err);
       }
     });
