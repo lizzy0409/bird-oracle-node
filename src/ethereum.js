@@ -14,7 +14,7 @@ export const updateRequest = ({
 }) => {
   return new Promise((resolve, reject) => {
     contract.updatedChainRequest(id, valueRetrieved, {
-      from: process.env.ACCOUNT,
+      from: variables.ACCOUNTS[process.env.ACCOUNT],
       gas: 60000
     }, (err, res) => {
       if (err === null) {
