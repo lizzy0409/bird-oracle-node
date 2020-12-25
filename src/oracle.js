@@ -11,7 +11,7 @@ const start = () => {
 
   newRequest((error, result) => {
     let options = {
-      uri: result.args.urlToQuery,
+      uri: result.args.url,
       json: true
     };
 
@@ -27,7 +27,7 @@ const parseData = result => (body) => {
     let id, valueRetrieved;
     try {
       id = result.args.id;
-      valueRetrieved = (body[result.args.attributeToFetch] || 0).toString();
+      valueRetrieved = (body[result.args.key] || 0).toString();
     } catch (error) {
       reject(error);
       return;

@@ -1,10 +1,11 @@
 require("dotenv").config();
 
 import Web3 from "web3";
+import variables from "./variables";
 
-const web3 = new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER_ADDRESS));
-const abi = JSON.parse(process.env.ABI);
-const address = process.env.CONTRACT_ADDRESS;
+const web3 = new Web3(new Web3.providers.HttpProvider(variables.WEB3_PROVIDER_ADDRESS));
+const abi = JSON.parse(variables.ABI);
+const address = variables.CONTRACT_ADDRESS;
 const contract = web3.eth.contract(abi).at(address);
 
 export const updateRequest = ({
@@ -12,9 +13,9 @@ export const updateRequest = ({
   valueRetrieved
 }) => {
   return new Promise((resolve, reject) => {
-    contract.updateRequest(id, valueRetrieved, {
+    contract.updatedChainRequest(id, valueRetrieved, {
       from: process.env.ACCOUNT,
-      gas: 600000
+      gas: 60000
     }, (err, res) => {
       if (err === null) {
         resolve(res);
@@ -26,5 +27,5 @@ export const updateRequest = ({
 };
 
 export const newRequest = (callback) => {
-  contract.NewRequest((error, result) => callback(error, result));
+  contract.OffChainRequest((error, result) => callback(error, result));
 };
