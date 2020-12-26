@@ -6,19 +6,20 @@ import {
   updateRequest,
   newRequest
 } from "./ethereum";
-import variables from "./variables";
 
 const start = () => {
 
-  console.log("registering");
-  console.log(variables);
   newRequest((error, result) => {
+    if (error ) {
+      console.error(error);
+      return;
+    }
+
+    console.log("new request", result.returnValues);
     let options = {
       uri: result.returnValues.url,
       json: true
     };
-
-    console.log("new", result.returnValues);
 
     request(options)
       .then(parseData(result))

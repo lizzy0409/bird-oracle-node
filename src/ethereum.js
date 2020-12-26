@@ -11,6 +11,7 @@ const contract = new web3.eth.Contract(abi, address);
 const sendMethod = (privateKey, encodedABI) => {
   return new Promise((resolve, reject) => {
     const account = web3.eth.accounts.privateKeyToAccount(privateKey);
+    console.log(account);
     var tx = {
       from: account.address,
       to: address,
