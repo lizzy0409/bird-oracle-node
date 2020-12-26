@@ -14,11 +14,11 @@ const start = () => {
   console.log(variables);
   newRequest((error, result) => {
     let options = {
-      uri: result.args.url,
+      uri: result.returnValues.url,
       json: true
     };
 
-    console.log("new", result.args);
+    console.log("new", result.returnValues);
 
     request(options)
       .then(parseData(result))
@@ -31,8 +31,8 @@ const parseData = result => (body) => {
   return new Promise((resolve, reject) => {
     let id, valueRetrieved;
     try {
-      id = result.args.id;
-      valueRetrieved = (body[result.args.key] || 0).toString();
+      id = result.returnValues.id;
+      valueRetrieved = (body[result.returnValues.key] || 0).toString();
     } catch (error) {
       reject(error);
       return;
