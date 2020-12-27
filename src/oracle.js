@@ -19,7 +19,7 @@ const start = () => {
       return;
     }
 
-    console.log("new request", result.returnValues);
+    console.log("New request", result.returnValues);
     let options = {
       uri: result.returnValues.url,
       json: true
