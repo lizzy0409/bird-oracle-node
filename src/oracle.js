@@ -9,6 +9,8 @@ import {
 
 const start = () => {
 
+  console.log("asdfasdfasfasfasfsdfsadfasdfasdfasdfsadfasdfasfdafasdfasf");
+
   newRequest((error, result) => {
     
     if (error ) {
