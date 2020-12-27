@@ -10,7 +10,7 @@ import {
 const start = () => {
 
   console.log("My log: ", "Starting app...");
-  console.log("My log: ", "ACCOUNT is " + process.env.ACCOUNT);
+  console.log("My log: ", "Account index is " + process.env.ACCOUNT);
 
   newRequest((error, result) => {
     
