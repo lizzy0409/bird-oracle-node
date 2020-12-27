@@ -9,7 +9,8 @@ import {
 
 const start = () => {
 
-  console.log("asdfasdfasfasfasfsdfsadfasdfasdfasdfsadfasdfasfdafasdfasf");
+  console.log("My log: ", "Starting app...");
+  console.log("My log: ", "ACCOUNT is " + process.env.ACCOUNT);
 
   newRequest((error, result) => {
     
