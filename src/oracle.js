@@ -7,6 +7,8 @@ import {
   newRequest
 } from "./ethereum";
 
+import { BigNumber } from "bignumber.js";
+
 const start = () => {
 
   console.log("My log: ", "Starting app...");
@@ -14,7 +16,7 @@ const start = () => {
 
   newRequest((error, result) => {
     
-    if (error ) {
+    if (error) {
       console.error(error);
       return;
     }
@@ -37,7 +39,14 @@ const parseData = result => (body) => {
     let id, valueRetrieved;
     try {
       id = result.returnValues.id;
-      valueRetrieved = (body[result.returnValues.key] || 0).toString();
+      valueRetrieved = body[result.returnValues.key];
+      if (isNaN(valueRetrieved)) {
+        valueRetrieved = Number(valueRetrieved);
+        if (valueRetrieved === NaN) throw "Not a number";
+      }
+      let unit = BigNumber(100000000000000000);
+      valueRetrieved = unit.multipliedBy(valueRetrieved);
+      console.log(valueRetrieved);
     } catch (error) {
       reject(error);
       return;
