@@ -44,9 +44,8 @@ const parseData = result => (body) => {
         valueRetrieved = Number(valueRetrieved);
         if (valueRetrieved === NaN) throw "Not a number";
       }
-      let unit = BigNumber(100000000000000000);
-      valueRetrieved = unit.multipliedBy(valueRetrieved);
-      console.log(valueRetrieved);
+      let oneEther = new BigNumber(1);
+      valueRetrieved = oneEther.shiftedBy(18).multipliedBy(valueRetrieved);
     } catch (error) {
       reject(error);
       return;
