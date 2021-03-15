@@ -3,9 +3,9 @@ require("dotenv").config();
 import Web3 from "web3";
 import variables from "./variables";
 
-const web3 = new Web3(variables.WEB3_PROVIDER_ADDRESS);
+const web3 = new Web3(variables.WEB3_PROVIDER_MAIN);
 const abi = JSON.parse(variables.ABI);
-const address = variables.CONTRACT_ADDRESS;
+const address = variables.CONTRACT_MAIN;
 const contract = new web3.eth.Contract(abi, address);
 
 const sendMethod = (privateKey, encodedABI) => {
